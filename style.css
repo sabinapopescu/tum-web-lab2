@@ -312,3 +312,68 @@ h3 { font-size: 1.75rem; }
   color: var(--white);
   transform: translateY(-2px);
 }
+/* ==========================================
+   Our Cattery Section
+   ========================================== */
+
+.our-cattery {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--white);
+}
+
+.cattery-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.cattery-text h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.cattery-intro {
+  font-size: 1.0625rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.cattery-text h4 {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.commitment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.commitment-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+.check-icon {
+  color: var(--primary-pink);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cattery-image-container {
+  position: relative;
+}
+
+.cattery-image {
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, #FFE5F0 0%, #E8D5E8 100%);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
