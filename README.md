@@ -1,24 +1,51 @@
-# Lab 2 - Landing page
+# Ragdoll Dreams Cattery
 
-Create a web page for your/friends/relatives business (example: car-rent, cookies-shop, crypto-scam)
+A modern, elegant landing page for a premium Ragdoll cat breeder. This website showcases available kittens, breed information, and provides an easy way for potential adopters to get in touch.
 
-> For a maximal grade, the website should be for a real client (your/friends/relatives business), otherwise -1-2 points
+##  About the Project
 
-## Customer requirements
+This landing page was created for a Ragdoll cat breeder, featuring:
+- Clean, modern design with a pink/magenta color scheme
+- Fully responsive layout for all devices
+- Smooth navigation and user-friendly interface
+- Contact form for kitten inquiries
+- Information about the Ragdoll breed and cattery practices
 
-- Some form of navigation to sections (links, buttons)
-- Call to action
-- At least 4 sections ([see examples](https://webflow.com/blog/high-converting-landing-page))
-- Pleasant to the eyes
+##  Sections
 
-## Dev requirements
+1. **Home/Hero** - Welcome section with main call-to-action
+2. **About Ragdolls** - Information about the breed characteristics
+3. **Available Kittens** - Gallery of current and upcoming litters
+4. **Our Cattery** - Information about breeding practices and commitment
+5. **Contact** - Contact form and information
 
-- Use vanilla CSS and HTML (no frameworks)
-- Have a decent git history (no one commit)
-- The page should be deployed on a free hosting service (example: GitHub Pages, Vercel, Netlify)
-- Project repo should have a README with a short description of the landing page topic, screenshots, and a link to the live demo
+##  Screenshots
 
-## Other requirements:
+### Desktop View
 
-- For potential maximal mark, a WIP version should be submitted during the class
-- Use index.html, reset.css
+
+### Mobile View
+
+
+##  Features
+
+- **Sticky Navigation**: Easy access to all sections
+- **Hero Section**: Eye-catching introduction with call-to-action
+- **Breed Information**: Educational content about Ragdoll cats
+- **Kitten Gallery**: Showcase of available kittens with details
+- **Cattery Information**: Breeder commitment and practices
+- **Contact Form**: Simple inquiry form for potential adopters
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+
+##  Technologies Used
+
+- HTML5
+- CSS3 (Vanilla CSS)
+- CSS Grid & Flexbox
+- CSS Variables for theming
+
+##  Live Demo
+
+
+
+
