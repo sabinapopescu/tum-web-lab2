@@ -56,8 +56,17 @@ h1, h2, h3 {
 }
 
 h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
+h2 { font-size: 3rem; }
 h3 { font-size: 1.75rem; }
+
+.section-intro {
+  font-size: 1.0625rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0.75rem auto 0;
+  text-align: center;
+}
 
 .container {
   max-width: 1200px;
@@ -657,8 +666,8 @@ h3 { font-size: 1.75rem; }
    ========================================== */
 
 @keyframes mascot-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
 }
 
 #mascot.mascot {
@@ -670,6 +679,18 @@ h3 { font-size: 1.75rem; }
   z-index: 1000;
   cursor: pointer;
   animation: mascot-bounce 2s ease-in-out infinite;
+}
+
+.mascot-hidden {
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  pointer-events: none;
+}
+
+.mascot-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 #mascot.mascot svg {
@@ -780,6 +801,12 @@ h3 { font-size: 1.75rem; }
     background-color: #20bd5a;
     color: var(--white);
   }
+
+  /* Lift mascot slightly so it doesn’t overlap the mobile action bar */
+  #mascot.mascot {
+    bottom: 96px;
+    right: 16px;
+  }
 }
 
 /* ==========================================
@@ -831,7 +858,7 @@ h3 { font-size: 1.75rem; }
 
   /* Sections */
   h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   /* Cattery */
@@ -877,7 +904,7 @@ h3 { font-size: 1.75rem; }
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-size: 2.25rem;
   }
 
   h3 {
@@ -1099,7 +1126,7 @@ h3 { font-size: 1.75rem; }
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   h3 {
@@ -1202,7 +1229,7 @@ h3 { font-size: 1.75rem; }
   }
 
   h2 {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
   }
 
   h3 {
