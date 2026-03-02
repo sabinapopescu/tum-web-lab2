@@ -294,7 +294,7 @@
       </div>
     </footer>
 
-    <div id="mascot" class="mascot mascot-hidden">
+    <div id="mascot" class="mascot">
       <span class="mascot-bubble">Мяу! Нужна помощь подобрать идеального рэгдолла? Свяжитесь с нами!</span>
       <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
        
@@ -316,7 +316,7 @@
         <ellipse cx="30" cy="72" rx="14" ry="10" fill="#F5E6E8" opacity="0.95"/>
         <ellipse cx="90" cy="72" rx="14" ry="10" fill="#F5E6E8" opacity="0.95"/>
         
-        <!-- Eyes (stunning blue - signature of Ragdolls) -->
+        <!-- Eyes -->
         <ellipse cx="45" cy="58" rx="8" ry="11" fill="#4A90E2"/>
         <ellipse cx="75" cy="58" rx="8" ry="11" fill="#4A90E2"/>
         <!-- Eye highlights -->
@@ -359,12 +359,11 @@
       </svg>
     
     </div>
-
+    
   <script>
     const hamburger = document.querySelector('.hamburger');
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-links a');
-    const mascot = document.getElementById('mascot');
 
     hamburger.addEventListener('click', function() {
       const isOpen = navbar.classList.toggle('nav-open');
@@ -379,12 +378,6 @@
         hamburger.setAttribute('aria-label', 'Open menu');
       });
     });
-
-    if (mascot) {
-      setTimeout(function() {
-        mascot.classList.add('mascot-visible');
-      }, 2500);
-    }
   </script>
   </body>
 </html>
