@@ -1,0 +1,26 @@
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navbar = document.querySelector('.navbar');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const mascot = document.getElementById('mascot');
+
+  hamburger.addEventListener('click', function() {
+    const isOpen = navbar.classList.toggle('nav-open');
+    this.setAttribute('aria-expanded', isOpen);
+    this.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  });
+
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      navbar.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Открыть меню');
+    });
+  });
+
+  if (mascot) {
+    setTimeout(function() {
+      mascot.classList.add('mascot-visible');
+    }, 2500);
+  }
+</script>
