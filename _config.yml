@@ -1,0 +1,23 @@
+title: "Ragdoll Dreams"
+description: "Питомник кошек породы рэгдолл, предлагающий здоровых, ласковых котят с чемпионскими кровными линиями."
+url: "" # Will be set to your GitHub Pages URL
+baseurl: "" # e.g. "/ragdoll-dreams" if deploying to a project page
+
+lang: ru
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Collections
+collections:
+  kittens:
+    output: false
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - README.md
+  - .git
