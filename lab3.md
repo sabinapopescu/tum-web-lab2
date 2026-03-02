@@ -43,8 +43,13 @@ It is a responsive, single–page marketing site for the fictional cattery **“
 
 No additional build tools or dependencies are required.
 
-### Notes for grading
-
 - The page is fully responsive down to 320px width; key breakpoints are 1024px, 768px, 375px and 320px.
 - Main section headings use Tailwind typography classes to match the provided design.
 - All navigation links scroll to in‑page sections, and interactive elements have reasonable accessible labels.
+### Demo
+<img width="1901" height="1052" alt="image" src="https://github.com/user-attachments/assets/800f51ca-8cff-4986-b61c-68c58120190a" />
+<img width="1903" height="1049" alt="image" src="https://github.com/user-attachments/assets/8af992f2-e021-456a-8ac2-3cf238adcbfa" />
+<img width="1901" height="1046" alt="image" src="https://github.com/user-attachments/assets/bc9ddc94-faa6-4d31-a08f-9af0d01a5042" />
+<img width="1882" height="1040" alt="image" src="https://github.com/user-attachments/assets/7b28cca3-23a4-4a18-ae06-a0fbc7d0dba4" />
+
+
