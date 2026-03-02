@@ -1,0 +1,1308 @@
+/* ==========================================
+   CSS Variables
+   ========================================== */
+
+:root {
+  /* Colors */
+  --primary-color: #8B9DC3;
+  --secondary-color: #DCC6B0;
+  --accent-color: #6B7FA8;
+  --text-dark: #2C3E50;
+  --text-light: #5D6D7E;
+  --background-light: #F8F9FA;
+  --white: #FFFFFF;
+  --border-color: #E8E8E8;
+  
+  /* Typography */
+  --font-heading: 'Georgia', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Spacing */
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 5rem;
+  
+  /* Other */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-pill: 50px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Aliases used in sections */
+  --light-gray: #F0F2F5;
+  --light-pink: #F5E6E8;
+  --primary-pink: #E85D9A;
+  --font-primary: var(--font-body);
+  --text-medium: var(--text-light);
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 3rem; }
+h3 { font-size: 1.75rem; }
+
+.section-intro {
+  font-size: 1.0625rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0.75rem auto 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* ==========================================
+   Navigation
+   ========================================== */
+
+.navbar {
+  background-color: var(--white);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Hamburger button – hidden on desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+}
+
+.hamburger:hover {
+  background: var(--background-light);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-dark);
+  border-radius: 1px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   Hero Section
+   ========================================== */
+
+.hero {
+  background-image: linear-gradient(135deg, rgba(139, 157, 195, 0.45) 0%, rgba(107, 127, 168, 0.45) 100%), url('assets/hero.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M50 10 L90 90 L10 90 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+  background-size: 100px 100px;
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: var(--spacing-md);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--white);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.95;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--accent-color);
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: var(--primary-color);
+}
+/* ==========================================
+   About the Breed Section
+   ========================================== */
+
+.about-breed {
+  padding: var(--spacing-lg) 0;
+  background-color: var(--background-light);
+}
+
+.about-breed h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--accent-color);
+}
+
+.breed-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.feature {
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+  margin-bottom: var(--spacing-sm);
+  color: var(--accent-color);
+}
+
+.feature-icon svg {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.feature h3 {
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.feature p {
+  color: var(--text-light);
+  line-height: 1.7;
+}
+/* ==========================================
+   Available Kittens Section
+   ========================================== */
+
+.kittens-gallery {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--light-gray);
+}
+
+.kittens-gallery h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.kitten-card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.kitten-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.kitten-image {
+  width: 100%;
+  height: 280px;
+  background-color: var(--light-pink);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Placeholder gradient backgrounds for kitten images */
+.kitten-1 {
+  background-image: url('assets/seal.jpg');
+}
+
+.kitten-2 {
+  background-image: url('assets/blue.webp');
+}
+
+.kitten-3 {
+  background-image: url('assets/lilac.jpg');
+}
+
+.kitten-4 {
+  background-image: url('assets/flame.jpg');
+}
+
+.kitten-info {
+  padding: 1.5rem;
+}
+
+.kitten-info h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.kitten-date {
+  color: var(--primary-pink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.kitten-description {
+  color: var(--text-medium);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--primary-pink);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid var(--primary-pink);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-pink);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+/* ==========================================
+   Our Cattery Section
+   ========================================== */
+
+.our-cattery {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--white);
+}
+
+.cattery-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.cattery-text h2 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.cattery-intro {
+  font-size: 1.0625rem;
+  color: var(--text-medium);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.cattery-text h4 {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.commitment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.commitment-list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+}
+
+.check-icon {
+  color: var(--primary-pink);
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cattery-image-container {
+  position: relative;
+}
+
+.cattery-image {
+  width: 100%;
+  height: 450px;
+  background-image: url('assets/catery.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+/* ==========================================
+   Contact Section
+   ========================================== */
+
+.contact {
+  padding: var(--spacing-xl) 0;
+  background-color: var(--light-gray);
+}
+
+.contact h2 {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.contact .section-intro {
+  text-align: center;
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* Contact Form */
+.contact-form {
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-pink);
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.contact-form .btn-primary {
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-primary);
+}
+
+/* Contact Info */
+.contact-info {
+  background-color: var(--white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  height: fit-content;
+}
+
+.contact-info h3 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+}
+
+.contact-item strong {
+  display: block;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.contact-item p {
+  color: var(--text-medium);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.social-links {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+}
+
+.social-links h4 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1rem;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: var(--light-pink);
+  color: var(--primary-pink);
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: var(--primary-pink);
+  color: var(--white);
+}
+/* ==========================================
+   Footer
+   ========================================== */
+
+.footer {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand h3 {
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.footer h4 {
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.125rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-pink);
+}
+
+.footer-contact p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: var(--spacing-md);
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ==========================================
+   Cat Mascot
+   ========================================== */
+
+@keyframes mascot-bounce {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+#mascot.mascot {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 90px;
+  height: 108px;
+  z-index: 1000;
+  cursor: pointer;
+  animation: mascot-bounce 2s ease-in-out infinite;
+}
+
+.mascot-hidden {
+  opacity: 0;
+  transform: translateY(16px) scale(0.96);
+  pointer-events: none;
+}
+
+.mascot-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#mascot.mascot svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mascot-bubble {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 8px;
+  padding: 0.75rem 1rem;
+  background: var(--white);
+  color: var(--text-dark);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  max-width: 240px;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+.mascot-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 20px;
+  border: 8px solid transparent;
+  border-top-color: var(--white);
+  border-bottom: 0;
+}
+
+#mascot.mascot:hover .mascot-bubble {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==========================================
+   Mobile Bottom Action Bar (mobile only)
+   ========================================== */
+
+.mobile-action-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-action-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background-color: var(--white);
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 34px;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-pink);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .mobile-action-btn:hover,
+  .mobile-action-btn:focus {
+    background-color: #d14d8a;
+    color: var(--white);
+  }
+
+  .mobile-action-btn:active {
+    transform: scale(0.98);
+  }
+
+  .mobile-action-icon {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .mobile-action-whatsapp {
+    background-color: #25D366;
+  }
+
+  .mobile-action-whatsapp:hover,
+  .mobile-action-whatsapp:focus {
+    background-color: #20bd5a;
+    color: var(--white);
+  }
+
+  /* Lift mascot slightly so it doesn’t overlap the mobile action bar */
+  #mascot.mascot {
+    bottom: 96px;
+    right: 16px;
+  }
+}
+
+/* ==========================================
+   Responsive Design
+   Breakpoints: 1024px, 768px, 375px, 320px
+   ========================================== */
+
+/* Tablet and small desktop */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /* Navigation */
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9375rem;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .hero-content {
+    padding: var(--spacing-md) 1.5rem;
+  }
+
+  /* CTA – tappable target (min 44px height) */
+  .cta-button {
+    min-height: 44px;
+    padding: 0.875rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Sections */
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Cattery */
+  .cattery-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .cattery-image {
+    height: 350px;
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Contact */
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+/* Tablet portrait and below */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    padding-bottom: 72px; /* Space for fixed mobile action bar */
+  }
+
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Typography – readable on mobile */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  h3 {
+    font-size: 1.375rem;
+  }
+
+  /* Navigation – hamburger menu on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 0.875rem 0;
+  }
+
+  .navbar .container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+
+  .logo {
+    font-size: 1.375rem;
+    flex: 1;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    padding: 1rem 0 0;
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .navbar.nav-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 420px;
+    padding: var(--spacing-md) 0;
+  }
+
+  .hero-content {
+    padding: 1.25rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.875rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-button {
+    min-height: 48px;
+    padding: 0.875rem 2rem;
+    font-size: 1.0625rem;
+  }
+
+  /* Section spacing – avoid cramped content */
+  .about-breed,
+  .kittens-gallery,
+  .our-cattery,
+  .contact {
+    padding: 2.5rem 0;
+  }
+
+  .about-breed h2,
+  .kittens-gallery h2,
+  .our-cattery .cattery-text h2,
+  .contact h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .breed-features {
+    gap: 1.25rem;
+  }
+
+  .feature {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .feature p,
+  .kitten-description,
+  .cattery-intro,
+  .contact .section-intro {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Gallery – single column, images scale */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .kitten-image {
+    width: 100%;
+    height: 260px;
+    max-width: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .kitten-info {
+    padding: 1.25rem;
+  }
+
+  .kitten-info h3 {
+    font-size: 1.125rem;
+  }
+
+  .btn-secondary {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Cattery */
+  .cattery-content {
+    gap: 1.5rem;
+  }
+
+  .cattery-image {
+    height: 280px;
+  }
+
+  .cattery-text h4 {
+    margin-top: 1.25rem;
+  }
+
+  .commitment-list li {
+    margin-bottom: 0.875rem;
+    font-size: 0.9375rem;
+  }
+
+  /* Contact form */
+  .contact-wrapper {
+    gap: 1.5rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    font-size: 16px; /* prevents zoom on iOS */
+  }
+
+  .contact-form .btn-primary {
+    min-height: 48px;
+    padding: 1rem;
+  }
+
+  .contact-info {
+    padding: 1.5rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 2.5rem 0 1.5rem;
+  }
+
+  .footer-content {
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .footer-brand p,
+  .footer-links a,
+  .footer-contact p {
+    font-size: 0.9375rem;
+  }
+}
+
+/* Mobile – 375px (e.g. iPhone SE width and up) */
+@media (max-width: 375px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  :root {
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: 1.625rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-content {
+    padding: 1rem 0.75rem;
+  }
+
+  .cta-button {
+    min-height: 48px;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  .about-breed,
+  .kittens-gallery,
+  .our-cattery,
+  .contact {
+    padding: 2rem 0;
+  }
+
+  .breed-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature {
+    padding: 1.25rem 1rem;
+  }
+
+  .feature h3 {
+    font-size: 1.125rem;
+  }
+
+  .gallery-grid {
+    gap: 1.25rem;
+  }
+
+  .kitten-image {
+    height: 220px;
+  }
+
+  .kitten-info {
+    padding: 1rem;
+  }
+
+  .cattery-image {
+    height: 240px;
+  }
+
+  .contact-form,
+  .contact-info {
+    padding: 1.25rem;
+  }
+
+  .social-buttons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .social-link {
+    min-height: 44px;
+    padding: 0.625rem 1rem;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* Small mobile – 320px */
+@media (max-width: 320px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  .hero {
+    min-height: 380px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .hero-content {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .cta-button {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9375rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .about-breed,
+  .kittens-gallery,
+  .our-cattery,
+  .contact {
+    padding: 1.5rem 0;
+  }
+
+  .feature {
+    padding: 1rem 0.75rem;
+  }
+
+  .feature-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .kitten-image {
+    height: 200px;
+  }
+
+  .kitten-info h3 {
+    font-size: 1rem;
+  }
+
+  .kitten-description {
+    font-size: 0.9375rem;
+  }
+
+  .cattery-image {
+    height: 200px;
+  }
+
+  .footer-content {
+    gap: 1.25rem;
+  }
+
+  .footer-brand p,
+  .footer-links a,
+  .footer-contact p,
+  .footer-bottom p {
+    font-size: 0.875rem;
+  }
+}
