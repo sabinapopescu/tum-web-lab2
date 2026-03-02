@@ -1,390 +1,168 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Питомник Ragdoll Dreams — элитные котята рэгдолл</title>
-    <meta name="description" content="Питомник кошек породы рэгдолл, предлагающий здоровых, ласковых котят с чемпионскими кровными линиями.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="container">
-        <div class="logo">Ragdoll Dreams</div>
-        <button class="hamburger" type="button" aria-label="Открыть меню" aria-expanded="false">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-        <ul class="nav-links">
-          <li><a href="#home">Главная</a></li>
-          <li><a href="#about">О рэгдоллах</a></li>
-          <li><a href="#kittens">Доступные котята</a></li>
-          <li><a href="#cattery">Наш питомник</a></li>
-          <li><a href="#contact">Контакты</a></li>
+---
+layout: default
+---
+{% assign s = site.data.settings %}
+
+{% include nav.html %}
+
+<!-- Hero Section -->
+<section id="home" class="hero" style="background-image: linear-gradient(135deg, rgba(139,157,195,0.45) 0%, rgba(107,127,168,0.45) 100%), url('{{ s.hero_image | relative_url }}');">
+  <div class="hero-content">
+    <h1>{{ s.hero_heading }}</h1>
+    <p class="hero-subtitle">{{ s.hero_subtitle }}</p>
+    <a href="{{ s.hero_cta_url }}" class="cta-button">{{ s.hero_cta_text }}</a>
+  </div>
+</section>
+
+<!-- Mobile-only quick actions -->
+<section class="md:hidden bg-white/90 backdrop-blur-sm px-4 py-6 border-b border-slate-200">
+  <div class="max-w-xl mx-auto text-center space-y-4">
+    <h2 class="text-xl font-semibold text-slate-800">{{ s.mobile_section_heading }}</h2>
+    <p class="text-slate-600 text-sm">{{ s.mobile_section_body }}</p>
+    <div class="flex items-center justify-center gap-4">
+      <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-pink-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/30 hover:bg-pink-600 active:scale-95 transition">
+        {{ s.mobile_cta_text }}
+      </a>
+      <img src="{{ 'assets/images/seal.jpg' | relative_url }}" alt="Пушистый котёнок рэгдолл" class="h-16 w-16 rounded-full object-cover shadow-md shadow-slate-300" />
+    </div>
+  </div>
+</section>
+
+<!-- About the Breed Section -->
+<section id="about" class="about-breed">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center mb-10">
+      {{ s.about_heading }}
+    </h2>
+    <div class="breed-features">
+      {% for feature in s.about_features %}
+      <div class="feature">
+        <div class="feature-icon" aria-hidden="true">
+          {% if feature.icon == "heart" %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          {% elsif feature.icon == "eye" %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          {% elsif feature.icon == "star" %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          {% elsif feature.icon == "home" %}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          {% endif %}
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Available Kittens Section -->
+<section id="kittens" class="kittens-gallery">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
+      {{ s.kittens_heading }}
+    </h2>
+    <p class="section-intro text-slate-600">{{ s.kittens_intro }}</p>
+
+    <div class="gallery-grid">
+      {% assign kittens = site.kittens | sort: "order" %}
+      {% for kitten in kittens %}
+      <div class="kitten-card">
+        <div class="kitten-image" style="background-image: url('{{ kitten.image | relative_url }}');"></div>
+        <div class="kitten-info">
+          <h3>{{ kitten.name }}</h3>
+          <p class="kitten-date">Доступен: {{ kitten.date_available }}</p>
+          <p class="kitten-description">{{ kitten.description }}</p>
+          <a href="#contact" class="btn-secondary">Узнать подробнее</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Our Cattery Section -->
+<section id="cattery" class="our-cattery">
+  <div class="container">
+    <div class="cattery-content">
+      <div class="cattery-text">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 mb-6">
+          {{ s.cattery_heading }}
+        </h2>
+        <p class="cattery-intro">{{ s.cattery_intro }}</p>
+        <h4>{{ s.cattery_quality_heading }}</h4>
+        <ul class="commitment-list">
+          {% for item in s.cattery_commitments %}
+          <li>
+            <span class="check-icon">✓</span>
+            <span>{{ item }}</span>
+          </li>
+          {% endfor %}
         </ul>
       </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>Добро пожаловать в Ragdoll Dreams</h1>
-        <p class="hero-subtitle">Элитные котята рэгдолл с чемпионскими родословными</p>
-        <a href="#contact" class="cta-button">Забронировать котёнка</a>
+      <div class="cattery-image-container">
+        <div class="cattery-image" style="background-image: url('{{ s.cattery_image | relative_url }}');"></div>
       </div>
-    </section>
-    <!-- Mobile-only TailwindCSS quick actions -->
-    <section class="md:hidden bg-white/90 backdrop-blur-sm px-4 py-6 border-b border-slate-200">
-      <div class="max-w-xl mx-auto text-center space-y-4">
-        <h2 class="text-xl font-semibold text-slate-800">С телефона? Свяжитесь с нами в один клик</h2>
-        <p class="text-slate-600 text-sm">
-          Забронируйте котёнка рэгдолл вашей мечты или задайте любой вопрос. Мы внимательно отвечаем на каждое обращение.
-        </p>
-        <div class="flex items-center justify-center gap-4">
-          <a
-            href="#contact"
-            class="inline-flex items-center justify-center rounded-full bg-pink-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/30 hover:bg-pink-600 active:scale-95 transition"
-          >
-            Забронировать с телефона
-          </a>
-          <img
-            src="assets/seal.jpg"
-            alt="Пушистый котёнок рэгдолл, смотрящий в камеру"
-            class="h-16 w-16 rounded-full object-cover shadow-md shadow-slate-300"
-          />
-        </div>
-      </div>
-    </section>
-    <!-- About the Breed Section -->
-    <section id="about" class="about-breed">
-      <div class="container">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center mb-10">
-          Почему стоит выбрать рэгдолла?
-        </h2>
-        <div class="breed-features">
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h3>Нежные гиганты</h3>
-            <p>Рэгдоллы известны своим спокойным, ласковым темпераментом. Они буквально «обмякают» на руках, отсюда и название «Ragdoll» — «тряпичная кукла».</p>
-          </div>
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </div>
-            <h3>Потрясающие голубые глаза</h3>
-            <p>У всех чистокровных рэгдоллов завораживающие голубые глаза, которые покоряют каждого, кто на них смотрит.</p>
-          </div>
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-            <h3>Шёлковая шерсть</h3>
-            <p>Их полудлинная, шёлковая шерсть требует минимум ухода и представлена в красивых пойнтовых окрасах.</p>
-          </div>
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3>Идеальные компаньоны</h3>
-            <p>Идеальны для семей: они терпеливы с детьми и прекрасно уживаются с другими животными.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Available Kittens Section -->
-    <section id="kittens" class="kittens-gallery">
-      <div class="container">
-        <!-- <p class="section-label">OUR KITTENS</p> -->
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
-          Доступные котята рэгдолл
-        </h2>
-        <p class="section-intro text-slate-600">
-          Познакомьтесь с нашими текущими и будущими помётами красивых, здоровых котят рэгдолл. Все котята продаются с ветеринарными сертификатами, регистрационными документами и пожизненной поддержкой заводчика.
-        </p>
-        
-        <div class="gallery-grid">
-          <div class="kitten-card">
-            <div class="kitten-image kitten-1"></div>
-            <div class="kitten-info">
-              <h3>Кот, окрас сил-пойнт</h3>
-              <p class="kitten-date">Дата рождения: декабрь 2026 г.</p>
-              <p class="kitten-description">Игривый и ласковый котик сил-пойнт с потрясающими голубыми глазами и мягким характером.</p>
-              <a href="#contact" class="btn-secondary">Узнать подробнее</a>
-            </div>
-          </div>
-          
-          <div class="kitten-card">
-            <div class="kitten-image kitten-2"></div>
-            <div class="kitten-info">
-              <h3>Кошка, окрас блю-пойнт</h3>
-              <p class="kitten-date">Дата рождения: декабрь 2026 г.</p>
-              <p class="kitten-description">Нежная и ласковая голубая принцесса блю-пойнт, обожающая объятия и внимание.</p>
-              <a href="#contact" class="btn-secondary">Узнать подробнее</a>
-            </div>
-          </div>
-          
-          <div class="kitten-card">
-            <div class="kitten-image kitten-3"></div>
-            <div class="kitten-info">
-              <h3>Кот, лиловый пойнт</h3>
-              <p class="kitten-date">Доступен: декабрь 2026 г.</p>
-              <p class="kitten-description">Редкий лиловый окрас (lilac point) и сдержанный, но благородный характер.</p>
-              <a href="#contact" class="btn-secondary">Узнать подробнее</a>
-            </div>
-          </div>
-          
-          <div class="kitten-card">
-            <div class="kitten-image kitten-4"></div>
-            <div class="kitten-info">
-              <h3>Кошка, окрас флейм-пойнт</h3>
-              <p class="kitten-date">Доступна: декабрь 2026 г.</p>
-              <p class="kitten-description">Красивая девочка флейм-пойнт, очень общительная и обожает играть с игрушками.</p>
-              <a href="#contact" class="btn-secondary">Узнать подробнее</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Our Cattery Section -->
-    <section id="cattery" class="our-cattery">
-      <div class="container">
-        <div class="cattery-content">
-          <div class="cattery-text">
-            <!-- <p class="section-label">ABOUT US</p> -->
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 mb-6">
-              Наш питомник
-            </h2>
-            <p class="cattery-intro">В питомнике Ragdoll Dreams мы занимаемся разведением здоровых, отлично социализированных котят рэгдолл с исключительным характером. Наши кошки происходят из чемпионских линий и растут у нас дома как полноценные члены семьи.</p>
-            
-            <h4>Наши приоритеты качества:</h4>
-            <ul class="commitment-list">
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Полное обследование здоровья на HCM, PKD и другие генетические маркеры</span>
-              </li>
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Котята растут «под ногами» в домашней обстановке и получают обширную социализацию</span>
-              </li>
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Гарантия здоровья и официальные регистрационные документы</span>
-              </li>
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Пожизненная поддержка заводчика для всех семей наших котят</span>
-              </li>
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Регулярное ветеринарное обслуживание и прививки по возрасту</span>
-              </li>
-              <li>
-                <span class="check-icon">✓</span>
-                <span>Премиальное питание и развивающие игры и занятия</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="cattery-image-container">
-            <div class="cattery-image"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <!-- <p class="section-label">GET IN TOUCH</p> -->
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
-          Забронируйте котёнка рэгдолл
-        </h2>
-        <p class="section-intro text-slate-600">
-          Хотите пополнить свою семью котёнком рэгдолл? Заполните форму ниже или свяжитесь с нами напрямую. Мы будем рады вашему сообщению!
-        </p>
-        
-        <div class="contact-wrapper">
-          <form class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name">Ваше имя *</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Электронная почта *</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="phone">Номер телефона</label>
-              <input type="tel" id="phone" name="phone">
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Расскажите о себе и о том, какого котёнка вы ищете *</label>
-              <textarea id="message" name="message" rows="5" required placeholder="Пожалуйста, расскажите о вашем доме, опыте общения с кошками и о том, какого котёнка вы ищете..."></textarea>
-            </div>
-            
-            <button type="submit" class="btn-primary">Отправить заявку</button>
-          </form>
-          
-          <div class="contact-info">
-            <h3>Контактная информация</h3>
-            <div class="contact-item">
-             
-              <div>
-                <strong>Электронная почта</strong>
-                <p>info@ragdolldreams.com</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              
-              <div>
-                <strong>Телефон</strong>
-                <p>+373 (XXX) XXX-XXX</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              
-              <div>
-                <strong>Местоположение</strong>
-                <p>Кишинёв, Молдова</p>
-              </div>
-            </div>
-            
-          
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <h3>Ragdoll Dreams</h3>
-            <p>Питомник элитных кошек породы рэгдолл, посвящённый выращиванию здоровых, хорошо социализированных котят с чемпионскими родословными.</p>
-          </div>
-          <div class="footer-links">
-            <h4>Быстрые ссылки</h4>
-            <ul>
-              <li><a href="#home">Главная</a></li>
-              <li><a href="#about">О рэгдоллах</a></li>
-              <li><a href="#kittens">Доступные котята</a></li>
-              <li><a href="#cattery">Наш питомник</a></li>
-              <li><a href="#contact">Контакты</a></li>
-            </ul>
-          </div>
-          <div class="footer-contact">
-            <h4>Контакты</h4>
-            <p>info@ragdolldreams.com</p>
-            <p>+373 (XXX) XXX-XXX</p>
-            <p>Кишинёв, Молдова</p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Питомник Ragdoll Dreams. Все права защищены.</p>
-          <p>Зарегистрированный питомник, строго придерживающийся этичных практик разведения.</p>
-        </div>
-      </div>
-    </footer>
-
-    <div id="mascot" class="mascot mascot-hidden">
-      <span class="mascot-bubble">Мяу! Нужна помощь подобрать идеального рэгдолла? Свяжитесь с нами!</span>
-      <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
-       
-        <!-- Ears -->
-        <ellipse cx="35" cy="25" rx="15" ry="20" fill="#DCC6B0" transform="rotate(-15 35 25)"/>
-        <ellipse cx="85" cy="25" rx="15" ry="20" fill="#DCC6B0" transform="rotate(15 85 25)"/>
-        <!-- Inner ears (pink) -->
-        <ellipse cx="35" cy="28" rx="8" ry="12" fill="#FFB3D9" opacity="0.6" transform="rotate(-15 35 28)"/>
-        <ellipse cx="85" cy="28" rx="8" ry="12" fill="#FFB3D9" opacity="0.6" transform="rotate(15 85 28)"/>
-        
-        <!-- Head -->
-        <ellipse cx="60" cy="60" rx="40" ry="38" fill="#F8F0E8"/>
-        <ellipse cx="60" cy="62" rx="38" ry="36" fill="#DCC6B0"/>
-        
-        <!-- Face mask (lighter color for Ragdoll pattern) -->
-        <ellipse cx="60" cy="55" rx="32" ry="28" fill="#E8DDD0"/>
-        
-        <!-- Cheek fluff -->
-        <ellipse cx="30" cy="72" rx="14" ry="10" fill="#F5E6E8" opacity="0.95"/>
-        <ellipse cx="90" cy="72" rx="14" ry="10" fill="#F5E6E8" opacity="0.95"/>
-        
-        <!-- Eyes (stunning blue - signature of Ragdolls) -->
-        <ellipse cx="45" cy="58" rx="8" ry="11" fill="#4A90E2"/>
-        <ellipse cx="75" cy="58" rx="8" ry="11" fill="#4A90E2"/>
-        <!-- Eye highlights -->
-        <ellipse cx="46" cy="55" rx="3" ry="4" fill="#87CEEB"/>
-        <ellipse cx="76" cy="55" rx="3" ry="4" fill="#87CEEB"/>
-        <circle cx="43" cy="60" r="1.5" fill="white"/>
-        <circle cx="73" cy="60" r="1.5" fill="white"/>
-        <!-- Pupils -->
-        <ellipse cx="45" cy="60" rx="3" ry="5" fill="#1a1a1a"/>
-        <ellipse cx="75" cy="60" rx="3" ry="5" fill="#1a1a1a"/>
-        
-        <!-- Nose -->
-        <path d="M60 70 L57 75 L60 76 L63 75 Z" fill="#E85D9A"/>
-        
-        <!-- Mouth (cute smile) -->
-        <path d="M60 76 Q56 80 52 79" fill="none" stroke="#2C3E50" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M60 76 Q64 80 68 79" fill="none" stroke="#2C3E50" stroke-width="1.5" stroke-linecap="round"/>
-        
-        <!-- Whiskers -->
-        <line x1="20" y1="68" x2="38" y2="70" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        <line x1="18" y1="74" x2="36" y2="74" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        <line x1="20" y1="80" x2="38" y2="78" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        <line x1="100" y1="68" x2="82" y2="70" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        <line x1="102" y1="74" x2="84" y2="74" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        <line x1="100" y1="80" x2="82" y2="78" stroke="#8B7D6B" stroke-width="1" opacity="0.7" stroke-linecap="round"/>
-        
-        <!-- Cute pink bow on head -->
-        <g transform="translate(60, 20)">
-          <!-- Bow center -->
-          <circle cx="0" cy="0" r="5" fill="#E85D9A"/>
-          <!-- Left bow -->
-          <ellipse cx="-10" cy="-2" rx="8" ry="6" fill="#E85D9A" transform="rotate(-20 -10 -2)"/>
-          <!-- Right bow -->
-          <ellipse cx="10" cy="-2" rx="8" ry="6" fill="#E85D9A" transform="rotate(20 10 -2)"/>
-          <!-- Bow ribbons -->
-          <path d="M-3 3 L-5 10 L-2 9 Z" fill="#E85D9A" opacity="0.8"/>
-          <path d="M3 3 L5 10 L2 9 Z" fill="#E85D9A" opacity="0.8"/>
-        </g>
-        
-      </svg>
-    
     </div>
+  </div>
+</section>
 
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navbar = document.querySelector('.navbar');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const mascot = document.getElementById('mascot');
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
+      {{ s.contact_heading }}
+    </h2>
+    <p class="section-intro text-slate-600">{{ s.contact_intro }}</p>
 
-    hamburger.addEventListener('click', function() {
-      const isOpen = navbar.classList.toggle('nav-open');
-      this.setAttribute('aria-expanded', isOpen);
-      this.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
-    });
+    <div class="contact-wrapper">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Электронная почта *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Номер телефона</label>
+          <input type="tel" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="message">Расскажите о себе и о том, какого котёнка вы ищете *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Пожалуйста, расскажите о вашем доме, опыте общения с кошками и о том, какого котёнка вы ищете..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">{{ s.contact_form_button }}</button>
+      </form>
 
-    navLinks.forEach(function(link) {
-      link.addEventListener('click', function() {
-        navbar.classList.remove('nav-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open menu');
-      });
-    });
+      <div class="contact-info">
+        <h3>{{ s.contact_info_heading }}</h3>
+        <div class="contact-item">
+          <div>
+            <strong>Электронная почта</strong>
+            <p>{{ s.email }}</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <strong>Телефон</strong>
+            <p>{{ s.phone }}</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div>
+            <strong>Местоположение</strong>
+            <p>{{ s.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    if (mascot) {
-      setTimeout(function() {
-        mascot.classList.add('mascot-visible');
-      }, 2500);
-    }
-  </script>
-  </body>
-</html>
+{% include footer.html %}
+{% include mascot.html %}
+{% include scripts.html %}
