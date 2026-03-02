@@ -1,0 +1,153 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # ← Change this
+  branch: main
+
+# When using GitHub Pages, media goes in assets/images
+media_folder: "assets/images"
+public_folder: "assets/images"
+
+collections:
+
+  # ─────────────────────────────────────────
+  # SITE SETTINGS (hero, sections, contact, footer)
+  # ─────────────────────────────────────────
+  - name: "settings"
+    label: "⚙️ Настройки сайта"
+    files:
+
+      - name: "general"
+        label: "Общие настройки"
+        file: "_data/settings.yml"
+        fields:
+
+          # Hero
+          - label: "🏠 Главный экран (Hero)"
+            name: "hero_section"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Заголовок", name: "hero_heading", widget: "string" }
+              - { label: "Подзаголовок", name: "hero_subtitle", widget: "string" }
+              - { label: "Текст кнопки", name: "hero_cta_text", widget: "string" }
+              - { label: "Ссылка кнопки", name: "hero_cta_url", widget: "string", default: "#contact" }
+              - { label: "Фоновое изображение", name: "hero_image", widget: "image" }
+
+          # Mobile section
+          - label: "📱 Мобильная секция"
+            name: "mobile_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: "mobile_section_heading", widget: "string" }
+              - { label: "Описание", name: "mobile_section_body", widget: "text" }
+              - { label: "Текст кнопки", name: "mobile_cta_text", widget: "string" }
+
+          # About breed
+          - label: "🐱 Раздел «О рэгдоллах»"
+            name: "about_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: "about_heading", widget: "string" }
+              - label: "Карточки преимуществ"
+                name: "about_features"
+                widget: "list"
+                fields:
+                  - label: "Иконка"
+                    name: "icon"
+                    widget: "select"
+                    options: ["heart", "eye", "star", "home"]
+                  - { label: "Заголовок", name: "title", widget: "string" }
+                  - { label: "Описание", name: "body", widget: "text" }
+
+          # Kittens section
+          - label: "🐾 Раздел «Котята»"
+            name: "kittens_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: "kittens_heading", widget: "string" }
+              - { label: "Вводный текст", name: "kittens_intro", widget: "text" }
+
+          # Cattery section
+          - label: "🏡 Раздел «Питомник»"
+            name: "cattery_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: "cattery_heading", widget: "string" }
+              - { label: "Описание питомника", name: "cattery_intro", widget: "text" }
+              - { label: "Фото питомника", name: "cattery_image", widget: "image" }
+              - { label: "Заголовок списка", name: "cattery_quality_heading", widget: "string" }
+              - label: "Пункты качества"
+                name: "cattery_commitments"
+                widget: "list"
+                field: { label: "Пункт", name: "item", widget: "string" }
+
+          # Contact section
+          - label: "✉️ Раздел «Контакты»"
+            name: "contact_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Заголовок", name: "contact_heading", widget: "string" }
+              - { label: "Вводный текст", name: "contact_intro", widget: "text" }
+              - { label: "Текст кнопки формы", name: "contact_form_button", widget: "string" }
+              - { label: "Заголовок блока контактов", name: "contact_info_heading", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Телефон", name: "phone", widget: "string" }
+              - { label: "Адрес", name: "location", widget: "string" }
+
+          # Footer
+          - label: "🔻 Футер"
+            name: "footer_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Слоган питомника", name: "footer_tagline", widget: "text" }
+              - { label: "Заметка в подвале", name: "footer_note", widget: "string" }
+
+          # Mascot
+          - label: "🐈 Маскот"
+            name: "mascot_section"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Текст в пузыре", name: "mascot_message", widget: "string" }
+
+      - name: "navigation"
+        label: "🔗 Навигация"
+        file: "_data/navigation.yml"
+        fields:
+          - label: "Пункты меню"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Название", name: "label", widget: "string" }
+              - { label: "Ссылка", name: "url", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # KITTENS COLLECTION
+  # ─────────────────────────────────────────
+  - name: "kittens"
+    label: "🐱 Котята"
+    label_singular: "Котёнок"
+    folder: "_kittens"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Имя / окрас", name: "name", widget: "string" }
+      - { label: "Дата доступности", name: "date_available", widget: "string", hint: "Например: декабрь 2026 г." }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Фото", name: "image", widget: "image" }
+      - label: "Статус"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Доступен", value: "available" }
+          - { label: "Зарезервирован", value: "reserved" }
+          - { label: "Продан", value: "sold" }
+        default: "available"
+      - { label: "Порядок отображения", name: "order", widget: "number", default: 1 }
