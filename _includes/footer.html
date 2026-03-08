@@ -2,7 +2,7 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>{{ site.title }}</h3>
+        <h3>{{ site.data.settings.site_title | default: site.title }}</h3>
         <p>{{ site.data.settings.footer_tagline }}</p>
       </div>
       <div class="footer-links">
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {{ 'now' | date: "%Y" }} Питомник {{ site.title }}. Все права защищены.</p>
+      <p>&copy; {{ 'now' | date: "%Y" }} Питомник {{ site.data.settings.site_title | default: site.title }}. Все права защищены.</p>
       <p>{{ site.data.settings.footer_note }}</p>
     </div>
   </div>

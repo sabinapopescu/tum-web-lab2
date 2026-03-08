@@ -21,6 +21,10 @@ collections:
         file: "_data/settings.yml"
         fields:
 
+          # Site identity
+          - { label: "Название сайта", name: "site_title", widget: "string" }
+          - { label: "Описание сайта", name: "site_description", widget: "text" }
+
           # Hero
           - label: "🏠 Главный экран (Hero)"
             name: "hero_section"
