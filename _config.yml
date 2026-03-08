@@ -13,6 +13,8 @@ permalink: pretty
 collections:
   kittens:
     output: false
+  colors:
+    output: false
 
 # Exclude from build
 exclude:
@@ -21,6 +23,4 @@ exclude:
   - node_modules
   - README.md
   - .git
-backend:
-  name: git-gateway
-  branch: lab4
+

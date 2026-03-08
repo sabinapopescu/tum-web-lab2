@@ -73,9 +73,14 @@ layout: default
       {% assign kittens = site.kittens | sort: "order" %}
       {% for kitten in kittens %}
       <div class="kitten-card">
-        <div class="kitten-image" style="background-image: url('{{ kitten.image | relative_url }}');"></div>
+        <div class="kitten-image" style="background-image: url('{{ kitten.image | relative_url }}');">
+          {% if kitten.color %}<span class="kitten-color-label">{{ kitten.color }}</span>{% endif %}
+        </div>
         <div class="kitten-info">
-          <h3>{{ kitten.name }}</h3>
+          <div class="kitten-name-row">
+            <h3>{{ kitten.name }}</h3>
+            {% if kitten.gender %}<span class="kitten-gender-badge">{{ kitten.gender }}</span>{% endif %}
+          </div>
           <p class="kitten-date">{{ kits.kitten_available_prefix }} {{ kitten.date_available }}</p>
           <p class="kitten-description">{{ kitten.description }}</p>
           <a href="#contact" class="btn-secondary">{{ kits.kitten_cta_text }}</a>

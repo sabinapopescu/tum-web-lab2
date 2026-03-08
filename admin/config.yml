@@ -189,7 +189,22 @@ collections:
     slug: "{{slug}}"
     identifier_field: "name"
     fields:
-      - { label: "Имя / окрас", name: "name", widget: "string" }
+      - { label: "Имя котёнка", name: "name", widget: "string" }
+      - label: "Пол"
+        name: "gender"
+        widget: "select"
+        options:
+          - { label: "Кот", value: "Кот" }
+          - { label: "Кошка", value: "Кошка" }
+        required: false
+      - label: "Окрас"
+        name: "color"
+        widget: "relation"
+        collection: "colors"
+        search_fields: ["name"]
+        value_field: "name"
+        display_fields: ["name"]
+        required: false
       - { label: "Дата доступности", name: "date_available", widget: "string", hint: "Например: декабрь 2026 г." }
       - { label: "Описание", name: "description", widget: "text" }
       - { label: "Фото", name: "image", widget: "image" }
@@ -202,3 +217,16 @@ collections:
           - { label: "Продан", value: "sold" }
         default: "available"
       - { label: "Порядок отображения", name: "order", widget: "number", default: 1 }
+
+  # ─────────────────────────────────────────
+  # COLORS COLLECTION
+  # ─────────────────────────────────────────
+  - name: "colors"
+    label: "🎨 Окрасы котят"
+    label_singular: "Окрас"
+    folder: "_colors"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "name"
+    fields:
+      - { label: "Название окраса", name: "name", widget: "string" }
