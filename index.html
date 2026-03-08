@@ -1,29 +1,34 @@
 ---
 layout: default
 ---
-{% assign s = site.data.settings %}
+{% assign hero     = site.data.hero %}
+{% assign mob      = site.data.mobile_section %}
+{% assign about    = site.data.about_section %}
+{% assign kits     = site.data.kittens_section %}
+{% assign cattery  = site.data.cattery_section %}
+{% assign contact  = site.data.contact_section %}
 
 {% include nav.html %}
 
 <!-- Hero Section -->
-<section id="home" class="hero" style="background-image: linear-gradient(135deg, rgba(139,157,195,0.45) 0%, rgba(107,127,168,0.45) 100%), url('{{ s.hero_image | relative_url }}');">
+<section id="home" class="hero" style="background-image: linear-gradient(135deg, rgba(139,157,195,0.45) 0%, rgba(107,127,168,0.45) 100%), url('{{ hero.hero_image | relative_url }}');">
   <div class="hero-content">
-    <h1>{{ s.hero_heading }}</h1>
-    <p class="hero-subtitle">{{ s.hero_subtitle }}</p>
-    <a href="{{ s.hero_cta_url }}" class="cta-button">{{ s.hero_cta_text }}</a>
+    <h1>{{ hero.hero_heading }}</h1>
+    <p class="hero-subtitle">{{ hero.hero_subtitle }}</p>
+    <a href="{{ hero.hero_cta_url }}" class="cta-button">{{ hero.hero_cta_text }}</a>
   </div>
 </section>
 
 <!-- Mobile-only quick actions -->
 <section class="md:hidden bg-white/90 backdrop-blur-sm px-4 py-6 border-b border-slate-200">
   <div class="max-w-xl mx-auto text-center space-y-4">
-    <h2 class="text-xl font-semibold text-slate-800">{{ s.mobile_section_heading }}</h2>
-    <p class="text-slate-600 text-sm">{{ s.mobile_section_body }}</p>
+    <h2 class="text-xl font-semibold text-slate-800">{{ mob.mobile_section_heading }}</h2>
+    <p class="text-slate-600 text-sm">{{ mob.mobile_section_body }}</p>
     <div class="flex items-center justify-center gap-4">
       <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-pink-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/30 hover:bg-pink-600 active:scale-95 transition">
-        {{ s.mobile_cta_text }}
+        {{ mob.mobile_cta_text }}
       </a>
-      <img src="{{ s.mobile_section_image | relative_url }}" alt="Пушистый котёнок рэгдолл" class="h-16 w-16 rounded-full object-cover shadow-md shadow-slate-300" />
+      <img src="{{ mob.mobile_section_image | relative_url }}" alt="Пушистый котёнок рэгдолл" class="h-16 w-16 rounded-full object-cover shadow-md shadow-slate-300" />
     </div>
   </div>
 </section>
@@ -32,10 +37,10 @@ layout: default
 <section id="about" class="about-breed">
   <div class="container">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center mb-10">
-      {{ s.about_heading }}
+      {{ about.about_heading }}
     </h2>
     <div class="breed-features">
-      {% for feature in s.about_features %}
+      {% for feature in about.about_features %}
       <div class="feature">
         <div class="feature-icon" aria-hidden="true">
           {% if feature.icon == "heart" %}
@@ -60,9 +65,9 @@ layout: default
 <section id="kittens" class="kittens-gallery">
   <div class="container">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
-      {{ s.kittens_heading }}
+      {{ kits.kittens_heading }}
     </h2>
-    <p class="section-intro text-slate-600">{{ s.kittens_intro }}</p>
+    <p class="section-intro text-slate-600">{{ kits.kittens_intro }}</p>
 
     <div class="gallery-grid">
       {% assign kittens = site.kittens | sort: "order" %}
@@ -71,9 +76,9 @@ layout: default
         <div class="kitten-image" style="background-image: url('{{ kitten.image | relative_url }}');"></div>
         <div class="kitten-info">
           <h3>{{ kitten.name }}</h3>
-          <p class="kitten-date">{{ s.kitten_available_prefix }} {{ kitten.date_available }}</p>
+          <p class="kitten-date">{{ kits.kitten_available_prefix }} {{ kitten.date_available }}</p>
           <p class="kitten-description">{{ kitten.description }}</p>
-          <a href="#contact" class="btn-secondary">{{ s.kitten_cta_text }}</a>
+          <a href="#contact" class="btn-secondary">{{ kits.kitten_cta_text }}</a>
         </div>
       </div>
       {% endfor %}
@@ -87,12 +92,12 @@ layout: default
     <div class="cattery-content">
       <div class="cattery-text">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 mb-6">
-          {{ s.cattery_heading }}
+          {{ cattery.cattery_heading }}
         </h2>
-        <p class="cattery-intro">{{ s.cattery_intro }}</p>
-        <h4>{{ s.cattery_quality_heading }}</h4>
+        <p class="cattery-intro">{{ cattery.cattery_intro }}</p>
+        <h4>{{ cattery.cattery_quality_heading }}</h4>
         <ul class="commitment-list">
-          {% for item in s.cattery_commitments %}
+          {% for item in cattery.cattery_commitments %}
           <li>
             <span class="check-icon">✓</span>
             <span>{{ item }}</span>
@@ -101,7 +106,7 @@ layout: default
         </ul>
       </div>
       <div class="cattery-image-container">
-        <div class="cattery-image" style="background-image: url('{{ s.cattery_image | relative_url }}');"></div>
+        <div class="cattery-image" style="background-image: url('{{ cattery.cattery_image | relative_url }}');"></div>
       </div>
     </div>
   </div>
@@ -111,51 +116,51 @@ layout: default
 <section id="contact" class="contact">
   <div class="container">
     <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-800 text-center">
-      {{ s.contact_heading }}
+      {{ contact.contact_heading }}
     </h2>
-    <p class="section-intro text-slate-600">{{ s.contact_intro }}</p>
+    <p class="section-intro text-slate-600">{{ contact.contact_intro }}</p>
 
     <div class="contact-wrapper">
       <form class="contact-form" name="contact" method="POST" data-netlify="true">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">{{ s.contact_form_name_label }} *</label>
+            <label for="name">{{ contact.contact_form_name_label }} *</label>
             <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="email">{{ s.contact_form_email_label }} *</label>
+            <label for="email">{{ contact.contact_form_email_label }} *</label>
             <input type="email" id="email" name="email" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="phone">{{ s.contact_form_phone_label }}</label>
+          <label for="phone">{{ contact.contact_form_phone_label }}</label>
           <input type="tel" id="phone" name="phone">
         </div>
         <div class="form-group">
-          <label for="message">{{ s.contact_form_message_label }} *</label>
-          <textarea id="message" name="message" rows="5" required placeholder="{{ s.contact_form_message_placeholder }}"></textarea>
+          <label for="message">{{ contact.contact_form_message_label }} *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="{{ contact.contact_form_message_placeholder }}"></textarea>
         </div>
-        <button type="submit" class="btn-primary">{{ s.contact_form_button }}</button>
+        <button type="submit" class="btn-primary">{{ contact.contact_form_button }}</button>
       </form>
 
       <div class="contact-info">
-        <h3>{{ s.contact_info_heading }}</h3>
+        <h3>{{ contact.contact_info_heading }}</h3>
         <div class="contact-item">
           <div>
-            <strong>{{ s.contact_info_email_label }}</strong>
-            <p>{{ s.email }}</p>
+            <strong>{{ contact.contact_info_email_label }}</strong>
+            <p>{{ contact.email }}</p>
           </div>
         </div>
         <div class="contact-item">
           <div>
-            <strong>{{ s.contact_info_phone_label }}</strong>
-            <p>{{ s.phone }}</p>
+            <strong>{{ contact.contact_info_phone_label }}</strong>
+            <p>{{ contact.phone }}</p>
           </div>
         </div>
         <div class="contact-item">
           <div>
-            <strong>{{ s.contact_info_location_label }}</strong>
-            <p>{{ s.location }}</p>
+            <strong>{{ contact.contact_info_location_label }}</strong>
+            <p>{{ contact.location }}</p>
           </div>
         </div>
       </div>

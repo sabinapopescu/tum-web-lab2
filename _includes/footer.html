@@ -2,11 +2,11 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>{{ site.data.settings.site_title | default: site.title }}</h3>
-        <p>{{ site.data.settings.footer_tagline }}</p>
+        <h3>{{ site.data.site_identity.site_title | default: site.title }}</h3>
+        <p>{{ site.data.footer_section.footer_tagline }}</p>
       </div>
       <div class="footer-links">
-        <h4>{{ site.data.settings.footer_links_heading }}</h4>
+        <h4>{{ site.data.footer_section.footer_links_heading }}</h4>
         <ul>
           {% for item in site.data.navigation.items %}
           <li><a href="{{ item.url }}">{{ item.label }}</a></li>
@@ -14,15 +14,15 @@
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>{{ site.data.settings.footer_contact_heading }}</h4>
-        <p>{{ site.data.settings.email }}</p>
-        <p>{{ site.data.settings.phone }}</p>
-        <p>{{ site.data.settings.location }}</p>
+        <h4>{{ site.data.footer_section.footer_contact_heading }}</h4>
+        <p>{{ site.data.contact_section.email }}</p>
+        <p>{{ site.data.contact_section.phone }}</p>
+        <p>{{ site.data.contact_section.location }}</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {{ 'now' | date: "%Y" }} Питомник {{ site.data.settings.site_title | default: site.title }}. Все права защищены.</p>
-      <p>{{ site.data.settings.footer_note }}</p>
+      <p>&copy; {{ 'now' | date: "%Y" }} Питомник {{ site.data.site_identity.site_title | default: site.title }}. Все права защищены.</p>
+      <p>{{ site.data.footer_section.footer_note }}</p>
     </div>
   </div>
 </footer>

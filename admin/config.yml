@@ -3,138 +3,32 @@ backend:
   repo: sabinapopescu/tum-web-lab2
   branch: lab4
 
-# When using GitHub Pages, media goes in assets/images
 media_folder: "assets/images"
 public_folder: "assets/images"
 
 collections:
 
   # ─────────────────────────────────────────
-  # SITE SETTINGS (hero, sections, contact, footer)
+  # SITE IDENTITY
   # ─────────────────────────────────────────
-  - name: "settings"
-    label: "⚙️ Настройки сайта"
+  - name: "site_identity"
+    label: "🌐 Название сайта"
     files:
-
-      - name: "general"
-        label: "Общие настройки"
-        file: "_data/settings.yml"
+      - name: "site_identity"
+        label: "Название и описание"
+        file: "_data/site_identity.yml"
         fields:
-
-          # Site identity
           - { label: "Название сайта", name: "site_title", widget: "string" }
           - { label: "Описание сайта", name: "site_description", widget: "text" }
 
-          # Hero
-          - label: "🏠 Главный экран (Hero)"
-            name: "hero_section"
-            widget: "object"
-            collapsed: false
-            fields:
-              - { label: "Заголовок", name: "hero_heading", widget: "string" }
-              - { label: "Подзаголовок", name: "hero_subtitle", widget: "string" }
-              - { label: "Текст кнопки", name: "hero_cta_text", widget: "string" }
-              - { label: "Ссылка кнопки", name: "hero_cta_url", widget: "string", default: "#contact" }
-              - { label: "Фоновое изображение", name: "hero_image", widget: "image" }
-
-          # Mobile section
-          - label: "📱 Мобильная секция"
-            name: "mobile_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок", name: "mobile_section_heading", widget: "string" }
-              - { label: "Описание", name: "mobile_section_body", widget: "text" }
-              - { label: "Текст кнопки", name: "mobile_cta_text", widget: "string" }
-              - { label: "Фото рядом с кнопкой", name: "mobile_section_image", widget: "image" }
-
-          # About breed
-          - label: "🐱 Раздел «О рэгдоллах»"
-            name: "about_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок", name: "about_heading", widget: "string" }
-              - label: "Карточки преимуществ"
-                name: "about_features"
-                widget: "list"
-                fields:
-                  - label: "Иконка"
-                    name: "icon"
-                    widget: "select"
-                    options: ["heart", "eye", "star", "home"]
-                  - { label: "Заголовок", name: "title", widget: "string" }
-                  - { label: "Описание", name: "body", widget: "text" }
-
-          # Kittens section
-          - label: "🐾 Раздел «Котята»"
-            name: "kittens_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок", name: "kittens_heading", widget: "string" }
-              - { label: "Вводный текст", name: "kittens_intro", widget: "text" }
-              - { label: "Префикс даты доступности", name: "kitten_available_prefix", widget: "string" }
-              - { label: "Текст кнопки карточки котёнка", name: "kitten_cta_text", widget: "string" }
-
-          # Cattery section
-          - label: "🏡 Раздел «Питомник»"
-            name: "cattery_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок", name: "cattery_heading", widget: "string" }
-              - { label: "Описание питомника", name: "cattery_intro", widget: "text" }
-              - { label: "Фото питомника", name: "cattery_image", widget: "image" }
-              - { label: "Заголовок списка", name: "cattery_quality_heading", widget: "string" }
-              - label: "Пункты качества"
-                name: "cattery_commitments"
-                widget: "list"
-                field: { label: "Пункт", name: "item", widget: "string" }
-
-          # Contact section
-          - label: "✉️ Раздел «Контакты»"
-            name: "contact_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок", name: "contact_heading", widget: "string" }
-              - { label: "Вводный текст", name: "contact_intro", widget: "text" }
-              - { label: "Текст кнопки формы", name: "contact_form_button", widget: "string" }
-              - { label: "Метка поля «Имя»", name: "contact_form_name_label", widget: "string" }
-              - { label: "Метка поля «Email»", name: "contact_form_email_label", widget: "string" }
-              - { label: "Метка поля «Телефон»", name: "contact_form_phone_label", widget: "string" }
-              - { label: "Метка поля «Сообщение»", name: "contact_form_message_label", widget: "string" }
-              - { label: "Плейсхолдер поля «Сообщение»", name: "contact_form_message_placeholder", widget: "text" }
-              - { label: "Заголовок блока контактов", name: "contact_info_heading", widget: "string" }
-              - { label: "Метка «Email» в блоке контактов", name: "contact_info_email_label", widget: "string" }
-              - { label: "Метка «Телефон» в блоке контактов", name: "contact_info_phone_label", widget: "string" }
-              - { label: "Метка «Адрес» в блоке контактов", name: "contact_info_location_label", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Телефон", name: "phone", widget: "string" }
-              - { label: "Адрес", name: "location", widget: "string" }
-
-          # Footer
-          - label: "🔻 Футер"
-            name: "footer_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Заголовок колонки «Ссылки»", name: "footer_links_heading", widget: "string" }
-              - { label: "Заголовок колонки «Контакты»", name: "footer_contact_heading", widget: "string" }
-              - { label: "Слоган питомника", name: "footer_tagline", widget: "text" }
-              - { label: "Заметка в подвале", name: "footer_note", widget: "string" }
-
-          # Mascot
-          - label: "🐈 Маскот"
-            name: "mascot_section"
-            widget: "object"
-            collapsed: true
-            fields:
-              - { label: "Текст в пузыре", name: "mascot_message", widget: "string" }
-
+  # ─────────────────────────────────────────
+  # NAVIGATION
+  # ─────────────────────────────────────────
+  - name: "navigation"
+    label: "🔗 Навигация"
+    files:
       - name: "navigation"
-        label: "🔗 Навигация"
+        label: "Пункты меню"
         file: "_data/navigation.yml"
         fields:
           - label: "Пункты меню"
@@ -143,6 +37,146 @@ collections:
             fields:
               - { label: "Название", name: "label", widget: "string" }
               - { label: "Ссылка", name: "url", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # HERO SECTION
+  # ─────────────────────────────────────────
+  - name: "hero"
+    label: "🏠 Главный экран"
+    files:
+      - name: "hero"
+        label: "Главный экран (Hero)"
+        file: "_data/hero.yml"
+        fields:
+          - { label: "Заголовок", name: "hero_heading", widget: "string" }
+          - { label: "Подзаголовок", name: "hero_subtitle", widget: "string" }
+          - { label: "Текст кнопки", name: "hero_cta_text", widget: "string" }
+          - { label: "Ссылка кнопки", name: "hero_cta_url", widget: "string", default: "#contact" }
+          - { label: "Фоновое изображение", name: "hero_image", widget: "image" }
+
+  # ─────────────────────────────────────────
+  # MOBILE SECTION
+  # ─────────────────────────────────────────
+  - name: "mobile_section"
+    label: "📱 Мобильная секция"
+    files:
+      - name: "mobile_section"
+        label: "Мобильная секция"
+        file: "_data/mobile_section.yml"
+        fields:
+          - { label: "Заголовок", name: "mobile_section_heading", widget: "string" }
+          - { label: "Описание", name: "mobile_section_body", widget: "text" }
+          - { label: "Текст кнопки", name: "mobile_cta_text", widget: "string" }
+          - { label: "Фото рядом с кнопкой", name: "mobile_section_image", widget: "image" }
+
+  # ─────────────────────────────────────────
+  # ABOUT SECTION
+  # ─────────────────────────────────────────
+  - name: "about_section"
+    label: "🐱 О рэгдоллах"
+    files:
+      - name: "about_section"
+        label: "Раздел «О рэгдоллах»"
+        file: "_data/about_section.yml"
+        fields:
+          - { label: "Заголовок", name: "about_heading", widget: "string" }
+          - label: "Карточки преимуществ"
+            name: "about_features"
+            widget: "list"
+            fields:
+              - label: "Иконка"
+                name: "icon"
+                widget: "select"
+                options: ["heart", "eye", "star", "home"]
+              - { label: "Заголовок", name: "title", widget: "string" }
+              - { label: "Описание", name: "body", widget: "text" }
+
+  # ─────────────────────────────────────────
+  # KITTENS SECTION
+  # ─────────────────────────────────────────
+  - name: "kittens_section"
+    label: "🐾 Секция «Котята»"
+    files:
+      - name: "kittens_section"
+        label: "Текст секции котят"
+        file: "_data/kittens_section.yml"
+        fields:
+          - { label: "Заголовок", name: "kittens_heading", widget: "string" }
+          - { label: "Вводный текст", name: "kittens_intro", widget: "text" }
+          - { label: "Префикс даты доступности", name: "kitten_available_prefix", widget: "string" }
+          - { label: "Текст кнопки карточки", name: "kitten_cta_text", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # CATTERY SECTION
+  # ─────────────────────────────────────────
+  - name: "cattery_section"
+    label: "🏡 Питомник"
+    files:
+      - name: "cattery_section"
+        label: "Раздел «Питомник»"
+        file: "_data/cattery_section.yml"
+        fields:
+          - { label: "Заголовок", name: "cattery_heading", widget: "string" }
+          - { label: "Описание питомника", name: "cattery_intro", widget: "text" }
+          - { label: "Фото питомника", name: "cattery_image", widget: "image" }
+          - { label: "Заголовок списка", name: "cattery_quality_heading", widget: "string" }
+          - label: "Пункты качества"
+            name: "cattery_commitments"
+            widget: "list"
+            field: { label: "Пункт", name: "item", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # CONTACT SECTION
+  # ─────────────────────────────────────────
+  - name: "contact_section"
+    label: "✉️ Контакты"
+    files:
+      - name: "contact_section"
+        label: "Раздел «Контакты»"
+        file: "_data/contact_section.yml"
+        fields:
+          - { label: "Заголовок", name: "contact_heading", widget: "string" }
+          - { label: "Вводный текст", name: "contact_intro", widget: "text" }
+          - { label: "Текст кнопки формы", name: "contact_form_button", widget: "string" }
+          - { label: "Метка поля «Имя»", name: "contact_form_name_label", widget: "string" }
+          - { label: "Метка поля «Email»", name: "contact_form_email_label", widget: "string" }
+          - { label: "Метка поля «Телефон»", name: "contact_form_phone_label", widget: "string" }
+          - { label: "Метка поля «Сообщение»", name: "contact_form_message_label", widget: "string" }
+          - { label: "Плейсхолдер поля «Сообщение»", name: "contact_form_message_placeholder", widget: "text" }
+          - { label: "Заголовок блока контактов", name: "contact_info_heading", widget: "string" }
+          - { label: "Метка «Email» в блоке контактов", name: "contact_info_email_label", widget: "string" }
+          - { label: "Метка «Телефон» в блоке контактов", name: "contact_info_phone_label", widget: "string" }
+          - { label: "Метка «Адрес» в блоке контактов", name: "contact_info_location_label", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Телефон", name: "phone", widget: "string" }
+          - { label: "Адрес", name: "location", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # FOOTER SECTION
+  # ─────────────────────────────────────────
+  - name: "footer_section"
+    label: "🔻 Футер"
+    files:
+      - name: "footer_section"
+        label: "Подвал сайта"
+        file: "_data/footer_section.yml"
+        fields:
+          - { label: "Заголовок колонки «Ссылки»", name: "footer_links_heading", widget: "string" }
+          - { label: "Заголовок колонки «Контакты»", name: "footer_contact_heading", widget: "string" }
+          - { label: "Слоган питомника", name: "footer_tagline", widget: "text" }
+          - { label: "Заметка в подвале", name: "footer_note", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # MASCOT
+  # ─────────────────────────────────────────
+  - name: "mascot_section"
+    label: "🐈 Маскот"
+    files:
+      - name: "mascot_section"
+        label: "Маскот"
+        file: "_data/mascot_section.yml"
+        fields:
+          - { label: "Текст в пузыре", name: "mascot_message", widget: "string" }
 
   # ─────────────────────────────────────────
   # KITTENS COLLECTION
