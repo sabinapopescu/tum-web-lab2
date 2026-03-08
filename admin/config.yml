@@ -3,6 +3,8 @@ backend:
   repo: sabinapopescu/tum-web-lab2
   branch: lab4
 
+locale: ru
+
 media_folder: "assets/images"
 public_folder: "assets/images"
 
