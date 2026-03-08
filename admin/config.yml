@@ -46,6 +46,7 @@ collections:
               - { label: "Заголовок", name: "mobile_section_heading", widget: "string" }
               - { label: "Описание", name: "mobile_section_body", widget: "text" }
               - { label: "Текст кнопки", name: "mobile_cta_text", widget: "string" }
+              - { label: "Фото рядом с кнопкой", name: "mobile_section_image", widget: "image" }
 
           # About breed
           - label: "🐱 Раздел «О рэгдоллах»"

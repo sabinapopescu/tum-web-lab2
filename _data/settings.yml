@@ -13,6 +13,7 @@ hero_image: "assets/images/hero.webp"
 mobile_section_heading: "С телефона? Свяжитесь с нами в один клик"
 mobile_section_body: "Забронируйте котёнка рэгдолл вашей мечты или задайте любой вопрос. Мы внимательно отвечаем на каждое обращение."
 mobile_cta_text: "Забронировать с телефона"
+mobile_section_image: "assets/images/seal.jpg"
 
 # About the Breed Section
 about_heading: "Почему стоит выбрать рэгдолла?"
