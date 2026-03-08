@@ -73,6 +73,8 @@ collections:
             fields:
               - { label: "Заголовок", name: "kittens_heading", widget: "string" }
               - { label: "Вводный текст", name: "kittens_intro", widget: "text" }
+              - { label: "Префикс даты доступности", name: "kitten_available_prefix", widget: "string" }
+              - { label: "Текст кнопки карточки котёнка", name: "kitten_cta_text", widget: "string" }
 
           # Cattery section
           - label: "🏡 Раздел «Питомник»"

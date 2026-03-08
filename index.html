@@ -71,9 +71,9 @@ layout: default
         <div class="kitten-image" style="background-image: url('{{ kitten.image | relative_url }}');"></div>
         <div class="kitten-info">
           <h3>{{ kitten.name }}</h3>
-          <p class="kitten-date">Доступен: {{ kitten.date_available }}</p>
+          <p class="kitten-date">{{ s.kitten_available_prefix }} {{ kitten.date_available }}</p>
           <p class="kitten-description">{{ kitten.description }}</p>
-          <a href="#contact" class="btn-secondary">Узнать подробнее</a>
+          <a href="#contact" class="btn-secondary">{{ s.kitten_cta_text }}</a>
         </div>
       </div>
       {% endfor %}
