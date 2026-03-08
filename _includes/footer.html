@@ -6,7 +6,7 @@
         <p>{{ site.data.settings.footer_tagline }}</p>
       </div>
       <div class="footer-links">
-        <h4>Быстрые ссылки</h4>
+        <h4>{{ site.data.settings.footer_links_heading }}</h4>
         <ul>
           {% for item in site.data.navigation.items %}
           <li><a href="{{ item.url }}">{{ item.label }}</a></li>
@@ -14,7 +14,7 @@
         </ul>
       </div>
       <div class="footer-contact">
-        <h4>Контакты</h4>
+        <h4>{{ site.data.settings.footer_contact_heading }}</h4>
         <p>{{ site.data.settings.email }}</p>
         <p>{{ site.data.settings.phone }}</p>
         <p>{{ site.data.settings.location }}</p>

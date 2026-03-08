@@ -117,6 +117,8 @@ collections:
             widget: "object"
             collapsed: true
             fields:
+              - { label: "Заголовок колонки «Ссылки»", name: "footer_links_heading", widget: "string" }
+              - { label: "Заголовок колонки «Контакты»", name: "footer_contact_heading", widget: "string" }
               - { label: "Слоган питомника", name: "footer_tagline", widget: "text" }
               - { label: "Заметка в подвале", name: "footer_note", widget: "string" }
 
