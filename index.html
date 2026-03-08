@@ -119,21 +119,21 @@ layout: default
       <form class="contact-form" name="contact" method="POST" data-netlify="true">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">Ваше имя *</label>
+            <label for="name">{{ s.contact_form_name_label }} *</label>
             <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label for="email">Электронная почта *</label>
+            <label for="email">{{ s.contact_form_email_label }} *</label>
             <input type="email" id="email" name="email" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="phone">Номер телефона</label>
+          <label for="phone">{{ s.contact_form_phone_label }}</label>
           <input type="tel" id="phone" name="phone">
         </div>
         <div class="form-group">
-          <label for="message">Расскажите о себе и о том, какого котёнка вы ищете *</label>
-          <textarea id="message" name="message" rows="5" required placeholder="Пожалуйста, расскажите о вашем доме, опыте общения с кошками и о том, какого котёнка вы ищете..."></textarea>
+          <label for="message">{{ s.contact_form_message_label }} *</label>
+          <textarea id="message" name="message" rows="5" required placeholder="{{ s.contact_form_message_placeholder }}"></textarea>
         </div>
         <button type="submit" class="btn-primary">{{ s.contact_form_button }}</button>
       </form>
@@ -142,19 +142,19 @@ layout: default
         <h3>{{ s.contact_info_heading }}</h3>
         <div class="contact-item">
           <div>
-            <strong>Электронная почта</strong>
+            <strong>{{ s.contact_info_email_label }}</strong>
             <p>{{ s.email }}</p>
           </div>
         </div>
         <div class="contact-item">
           <div>
-            <strong>Телефон</strong>
+            <strong>{{ s.contact_info_phone_label }}</strong>
             <p>{{ s.phone }}</p>
           </div>
         </div>
         <div class="contact-item">
           <div>
-            <strong>Местоположение</strong>
+            <strong>{{ s.contact_info_location_label }}</strong>
             <p>{{ s.location }}</p>
           </div>
         </div>

@@ -98,7 +98,15 @@ collections:
               - { label: "Заголовок", name: "contact_heading", widget: "string" }
               - { label: "Вводный текст", name: "contact_intro", widget: "text" }
               - { label: "Текст кнопки формы", name: "contact_form_button", widget: "string" }
+              - { label: "Метка поля «Имя»", name: "contact_form_name_label", widget: "string" }
+              - { label: "Метка поля «Email»", name: "contact_form_email_label", widget: "string" }
+              - { label: "Метка поля «Телефон»", name: "contact_form_phone_label", widget: "string" }
+              - { label: "Метка поля «Сообщение»", name: "contact_form_message_label", widget: "string" }
+              - { label: "Плейсхолдер поля «Сообщение»", name: "contact_form_message_placeholder", widget: "text" }
               - { label: "Заголовок блока контактов", name: "contact_info_heading", widget: "string" }
+              - { label: "Метка «Email» в блоке контактов", name: "contact_info_email_label", widget: "string" }
+              - { label: "Метка «Телефон» в блоке контактов", name: "contact_info_phone_label", widget: "string" }
+              - { label: "Метка «Адрес» в блоке контактов", name: "contact_info_location_label", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
               - { label: "Телефон", name: "phone", widget: "string" }
               - { label: "Адрес", name: "location", widget: "string" }
